@@ -1,20 +1,212 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>登录</title>
+<meta charset="utf-8">
+<link rel="shortcut icon" href="梓希.jpg" type="image/x-icon">
+<title>注册</title>
+<style>
+*{
+            margin: 0;
+            padding: 0;
+        }
+        .block{
+            position: relative;
+            margin: 0 auto;
+            margin-top: 80px;
+            width: 710px;
+            height: 500px;
+            border: 1px solid rgba(29, 29, 29, 0.64);
+            background: url("./img/logo2396.jpg")no-repeat;
+            background-size: 100%;
+        }
+        .photo {
+            position: absolute;
+            z-index: 1;
+            width: 710px;
+            height: 500px;
+            background-color: rgba(0, 0, 0, 0.71);
+        }
+        .biao{
+            margin-top: 20px;
+            position: absolute;
+            z-index: 2;
+            margin-left: 150px;
+        }
+        li{
+            position: relative;
+            padding-left:20px ;
+            list-style: none;
+            line-height: 70px;
+            width: 400px;
+            border: 1px solid white;
+            margin:5px auto;
+        }
+        li input[type=text]{
+            padding-left: 20px;
+            border-style: none;
+            background: none;
+        }
+        input[type=submit]{
+            margin-left: 150px;
+            border-style: none;
+            font-size: 25px;
+            color: white;
+            background: none;
+        }
+        .d{
+            background-color: rgba(222, 53, 3, 0.71);
+        }
+       .txt{
+           line-height: 50px;
+           width: 280px;
+           font-size: 15px;
+           color: white;
+       }
+       .error {
+           position: absolute;
+           z-index: 2;
+           left: 150px;
+           color: rgba(253, 253, 253, 0.4);
+           font-size: 14px;
+       }
+</style>
 </head>
-
 <body>
-登录界面
-<br/>
-账号<input type="text" name="账号" size="10" maxlength="10">
-<br/><br/>
-密码<input type="password" name="密码" size="10" maxlength="10">
-   <br/>
-<br/>
-<input  type="submit" value="登录" onclick="alert('登录失败')">
-</body>
+<script>
+var sub=document.getElementById("sub");
+    var txt=document.getElementsByClassName("txt");
+     var li=document.getElementsByTagName("li");
+    document.forms.form.οnsubmit=function(){
+        yan();
+        var errl=document.getElementsByClassName("error").length;
+        if(!errl){
+            return true;
+        }
+        return false;
+    };
+    function yan(){
+        for(var i=0;i<txt.length;i++){
+            txt[i].focus();
+        }
+        sub.focus();
+    }
+    for(var i=0;i<txt.length;i++)
+    {
+    txt[i].index=i;
+    txt[i].οnfοcus=function (){
+    if(this.parentElement.children[2]==undefined) return;
+    this.parentElement.children[2].remove();
+    };
+    txt[i].οnblur=function (){
+    switch (this.index){
+        case 0:
+            if(this.value==""){
+                var s=document.createElement("span");
+                s.innerHTML="请输入账号";
+                s.className="error";
+                li[this.index].appendChild(s)
+            }
+            else{
+                var s=document.createElement("span");
+                s.innerHTML="";
+                s.className="sucess";
+                li[this.index].appendChild(s)
+            }
+            break;
+        case 1:
+            if(this.value==""){
+                var s=document.createElement("span");
+                s.innerHTML="请输入密码";
+                s.className="error";
+                li[this.index].appendChild(s)
+            }
+            else if(this.value.length<6||this.value.length>11) {
+                var s=document.createElement("span");
+                s.innerHTML="密码错误";
+                s.className="error";
+                li[this.index].appendChild(s);
+               txt[this.index].value="";
+            }
+             else{
+                    var s=document.createElement("span");
+                    s.innerHTML="";
+                    s.className="sucess";
+                    li[this.index].appendChild(s)
+                }
+            break;
+        case 2:
+            if(this.value==""){
+                var s=document.createElement("span");
+                s.innerHTML="请再次确认密码";
+                s.className="error";
+                li[this.index].appendChild(s);
+                txt[this.index].value="";
+            }
+            else if(this.value!=txt[1].value){
+                var s=document.createElement("span");
+                s.innerHTML="请重新输入";
+                s.className="error";
+                li[this.index].appendChild(s);
+                txt[this.index].value="";
+            }
+            else{
+                var s=document.createElement("span");
+                s.innerHTML="";
+                s.className="sucess";
+                li[this.index].appendChild(s)
+            }
+            break;
+        case 3:
+            if(this.value==""){
+                var s=document.createElement("span");
+                s.innerHTML="请输入号码";
+                s.className="error";
+                li[this.index].appendChild(s)
+            }
+            else if(this.value.length!=11){
+                var s=document.createElement("span");
+                s.innerHTML="号码格式错误";
+                s.className="error";
+                li[this.index].appendChild(s)
+                txt[this.index].value="";
+            }
+            else{
+                var s=document.createElement("span");
+                s.innerHTML="";
+                s.className="sucess";
+                li[this.index].appendChild(s)
+            }
+            break;
+        case 4:
+            if(this.value==""){
+                var s=document.createElement("span");
+                s.innerHTML="请输入邮箱";
+                s.className="error";
+                li[this.index].appendChild(s)
+            }
+            else{
+                var s=document.createElement("span");
+                s.innerHTML="";
+                s.className="sucess";
+                li[this.index].appendChild(s)
+            }
+            break;
+        }
+      }
+    }
 
+</script>
+	<div class="block">
+    <div class="photo"></div>
+    <div class="biao">
+        <form name="form">
+            <ul>
+                <li><label style="color: white">账&nbsp;&nbsp;号：</label><input class="txt" type="text"></li>
+                <li><label style="color: white">密&nbsp;&nbsp;码：</label><input class="txt" type="text"></li>
+                <li class="d"><input id="sub" type="submit" value="登录"></li>
+            </ul>
+        </form>
+    </div>
+</div>
+</body>
 </html>
